@@ -1,9 +1,7 @@
-with open('aoc-daytwo-input.txt') as f:
-    input = f.read()
-instructions = input.split('\n')
+input = open('aoc-daytwo-input.txt', 'r').readlines()
 location = {"horizontal": 0, "depth": 0}
-for instruction in instructions:
-    split_instructions = instruction.split(' ')
+for instruction in input:
+    split_instructions = instruction.strip('\n').split(' ')
     direction = split_instructions[0]
     move_val = int(split_instructions[1])
     if direction == 'forward':

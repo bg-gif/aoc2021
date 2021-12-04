@@ -1,9 +1,9 @@
-with open('aoc-dayone-input.txt') as f:
-    input = f.read()
-arr = input.split('\n')
-ints = [int(x) for x in arr]
-count = 0
-for i in range(len(ints)):
-    if ints[i] > 0 and ints[i] > ints[i-1]:
-        count+=1
-print(count)
+def sum():
+    input = [int(x) for x in open('aoc-dayone-input.txt', 'r').readlines()]
+    count = 0
+    for i in range(len(input)):
+        if input[i] > 0 and input[i] > input[i-1]:
+            count+=1
+    return count
+
+print(sum())
