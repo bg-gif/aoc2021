@@ -1,11 +1,11 @@
-class Gamma_Epsilon():
+class Gamma_Epsilon:
 
-    def __init__(self):
-        self.input = self.create_input()
+    def __init__(self, input_file):
+        self.input = self.create_input(input_file)
         self.counter = self.declare_obj()
 
-    def create_input(self):
-        input = [x.strip('\n') for x in open('aoc-daythree-input.txt', 'r').readlines()]
+    def create_input(self, input_file):
+        input = [x.strip('\n') for x in open(input_file, 'r').readlines()]
         return input
 
     def update_obj(self, index, counter):
@@ -46,7 +46,7 @@ class Gamma_Epsilon():
         power = self.get_epsilon() * self.get_gamma()
         return power
 
-counter = Gamma_Epsilon()
+counter = Gamma_Epsilon('aoc-daythree-input.txt')
 counter.count_characters()
 print('Gamma: ' + str(counter.get_gamma()))
 print('Epsilon: ' + str(counter.get_epsilon()))
