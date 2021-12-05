@@ -1,28 +1,25 @@
 class Gamma_Epsilon:
 
     def __init__(self, input_file):
-        self.input = self.create_input(input_file)
-        self.counter = self.declare_obj()
-
-    def create_input(self, input_file):
-        input = [x.strip('\n') for x in open(input_file, 'r').readlines()]
-        return input
+        self.input = [x.strip('\n') for x in open(input_file, 'r').readlines()]
+        self.counter = self.declare_counter()
 
     def update_obj(self, index, counter):
         counter[index] = {'1':0, '0':0}
         return 
 
-    def declare_obj(self):
+    def declare_counter(self):
         counter = {}
         for x in range(len(self.input[0])):
             self.update_obj(x, counter)
+        self.count_characters(counter)
         return counter
 
-    def count_characters(self):
+    def count_characters(self, counter):
         for x in self.input:
             binary_array = [y for y in x]
             for index in range(len(binary_array)):
-                self.counter[index][binary_array[index]] += 1
+                counter[index][binary_array[index]] += 1
     
     def get_gamma(self):
         key = ''
@@ -47,7 +44,6 @@ class Gamma_Epsilon:
         return power
 
 counter = Gamma_Epsilon('aoc-daythree-input.txt')
-counter.count_characters()
 print('Gamma: ' + str(counter.get_gamma()))
 print('Epsilon: ' + str(counter.get_epsilon()))
 print('Power: ' + str(counter.get_power()))
